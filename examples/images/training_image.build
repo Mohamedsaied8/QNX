@@ -1,0 +1,48 @@
+# Build file for training exercise
+# This is a minimal x86_64 BIOS system buildfile, appropriate for VMWare or Virtual Box.
+[virtual=x86_64,bios] .bootstrap = {
+    startup-x86
+    PATH=/proc/boot
+    LD_LIBRARY_PATH=/proc/boot:/lib
+    procnto-smp-instr
+}
+[autoso=list]
+
+[+script] .script = {
+    procmgr_symlink /proc/boot/ldqnx-64.so.2 /usr/lib/ldqnx-64.so.2
+    display_msg QNX Training exercise boot image
+    
+    devc-con -n4 &
+    # start some shells
+    reopen /dev/con4
+    [+session] ksh &
+    reopen /dev/con3
+    [+session] ksh &
+    reopen /dev/con2
+    [+session] ksh &
+    reopen /dev/con1
+    [+session] ksh &
+}
+
+libc.so
+libgcc_s.so.1
+ldqnx-64.so.2
+libsecpol.so
+# drivers
+devc-con
+# a few handy executables
+pidin
+ksh
+toybox
+
+# toybox needs several shared objects
+libregex.so
+libfsnotify.so
+/lib/libm.so.3=libm.so.3
+libm.so
+libz.so
+
+# setup common Unix utilites as links to toybox
+[type=link] ls=toybox
+[type=link] cat=toybox
+[type=link] rm=toybox
