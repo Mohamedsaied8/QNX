@@ -1,0 +1,8 @@
+# CMake build tree
+build/
+# Compiled lab binaries (if built in-place without CMake)
+*.o
+*.out
+a.out
+# Stray scratch
+testing.txt

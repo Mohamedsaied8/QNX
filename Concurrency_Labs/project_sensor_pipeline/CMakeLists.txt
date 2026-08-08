@@ -1,0 +1,6 @@
+add_executable(sensor_pipeline src/main.cpp)
+target_include_directories(sensor_pipeline PRIVATE include)
+target_link_libraries(sensor_pipeline PRIVATE Threads::Threads)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+  target_compile_options(sensor_pipeline PRIVATE -Wall -Wextra -Wpedantic)
+endif()
