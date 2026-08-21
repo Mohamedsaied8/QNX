@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "template": {
+    "projectId": "rpi4_resmgr_client",
+    "artifactName": "rpi4_resmgr_client",
+    "buildType": "CMake",
+    "language": "c",
+    "archlist": "x86_64,aarch64le",
+    "artifactType": "Executable"
+  }
+}

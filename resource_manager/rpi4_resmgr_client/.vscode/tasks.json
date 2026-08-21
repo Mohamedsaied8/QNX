@@ -1,0 +1,61 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "qnxcmake",
+			"label": "QNX: CMake Configure (debug)",
+			"command": "configure",
+			"options": {
+				"environment": {
+					"CMAKE_BUILD_TYPE": "Debug"
+				}
+			}
+		},
+		{
+			"type": "qnxcmake",
+			"label": "QNX: CMake Configure (release)",
+			"command": "configure",
+			"options": {
+				"environment": {
+					"CMAKE_BUILD_TYPE": "Release"
+				}
+			}
+		},
+		{
+			"type": "qnxcmake",
+			"label": "QNX: CMake Reconfigure",
+			"command": "reconfigure"
+		},
+		{
+			"type": "qnxcmake",
+			"label": "QNX: CMake Build",
+			"command": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"QNX: CMake Reconfigure"
+			]
+		},
+		{
+			"type": "qnxcmake",
+			"label": "QNX: CMake Build (No Reconfigure)",
+			"command": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			}
+		},
+		{
+			"type": "qnxcmake",
+			"label": "QNX: CMake Stage",
+			"command": "stage"
+		},
+		{
+			"type": "qnxcmake",
+			"label": "QNX: CMake Clean",
+			"command": "clean"
+		}
+	]
+}
